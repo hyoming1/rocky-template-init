@@ -52,8 +52,7 @@ else
     # 6. DNF 캐시 정리
     dnf clean all
 
-    # 7. root 계정 암호 삭제 및 비활성화
-    passwd -d root
+    # 7. root 계정 비활성화
     passwd -l root
 
     # 8. Cloud-init 초기화
