@@ -53,16 +53,24 @@ else
     # 6. DNF 캐시 정리
     dnf clean all
 
-    # 7. 셸 히스토리 초기화
+    # 7. root 계정 암호 삭제 및 비활성화
+    passwd -d root
+    passwd -l root
+
+    # 8. Cloud-init 초기화
+    cloud-init clean --logs
+    rm -rf /var/lib/cloud/*
+    
+    # 9. 셸 히스토리 초기화
     cat /dev/null > ~/.bash_history
     history -c
 
-    # 8. 재부팅 플래그 제거
+    # 10. 재부팅 플래그 제거
     rm -f $FLAG
 
-    # 9. 스크립트 자체 삭제
+    # 11. 스크립트 자체 삭제
     rm -- "$0"
 
-    # 10. 시스템 종료
+    # 12. 시스템 종료
     poweroff
 fi
