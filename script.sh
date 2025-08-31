@@ -46,8 +46,16 @@ else
     cloud-init clean --logs
     rm -rf /var/lib/cloud/*
      
-    # 6. 저널 로그 전체 삭제 (완전 초기화)
+    # 6. 각종 로그 삭제, 초기화
     rm -rf /var/log/journal/*
+    > /var/log/wtmp
+    > /var/log/btmp
+    > /var/log/lastlog
+    > /var/log/secure  
+    > /var/log/messages   
+    > /var/log/cron       
+    > /var/log/dmesg      
+    > /var/log/boot.log 
 
     # 7. 임시파일 정리
     rm -rf /tmp/* /var/tmp/*
