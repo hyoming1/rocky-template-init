@@ -14,7 +14,7 @@ if [ ! -f $FLAG ]; then
     dnf install -y bash-completion epel-release qemu-guest-agent cloud-init
 
     # 2. QEMU Guest Agent 활성화
-    systemctl enable --now qemu-guest-agent
+    systemctl enable qemu-guest-agent
 
     # 3. 방화벽 비활성화
     systemctl disable --now firewalld.service
