@@ -16,8 +16,8 @@ if [ ! -f $FLAG ]; then
     # 2. QEMU Guest Agent 활성화
     systemctl enable qemu-guest-agent
 
-    # 3. 방화벽 비활성화
-    systemctl disable --now firewalld.service
+    # 3. 방화벽 삭제
+    dnf remove -y firewalld
 
     # 4. 시스템 패키지 최신화
     dnf update -y
