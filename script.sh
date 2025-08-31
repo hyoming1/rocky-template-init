@@ -39,25 +39,21 @@ else
     # 3. SSH 호스트 키 삭제
     rm -f /etc/ssh/ssh_host_*
 
-    # 4. 시스템 로그 정리
-    journalctl --rotate
-    journalctl --vacuum-time=1s
-
-    # 4-1. 저널 로그 전체 삭제 (완전 초기화)
-    rm -rf /var/log/journal/*
-
-    # 5. 임시파일 정리
-    rm -rf /tmp/* /var/tmp/*
-
-    # 6. DNF 캐시 정리
+    # 4. DNF 캐시 정리
     dnf clean all
-
-    # 7. root 계정 비활성화
-    passwd -l root
-
-    # 8. Cloud-init 초기화
+    
+    # 5. Cloud-init 초기화
     cloud-init clean --logs
     rm -rf /var/lib/cloud/*
+    
+    # 6. root 계정 비활성화
+    passwd -l root
+     
+    # 7. 저널 로그 전체 삭제 (완전 초기화)
+    rm -rf /var/log/journal/*
+
+    # 8. 임시파일 정리
+    rm -rf /tmp/* /var/tmp/*
     
     # 9. 셸 히스토리 초기화
     cat /dev/null > ~/.bash_history
